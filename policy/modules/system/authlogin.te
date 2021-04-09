@@ -21,6 +21,9 @@ attribute nsswitch_domain;
 type auth_cache_t;
 logging_log_file(auth_cache_t)
 
+type auth_lock_t;
+files_lock_file(auth_lock_t)
+
 type chkpwd_t, can_read_shadow_passwords;
 type chkpwd_exec_t;
 application_domain(chkpwd_t, chkpwd_exec_t)
@@ -347,6 +350,7 @@ term_dontaudit_use_console(updpwd_t)
 term_dontaudit_use_unallocated_ttys(updpwd_t)
 
 auth_manage_shadow(updpwd_t)
+auth_rw_lock(updpwd_t)
 auth_use_nsswitch(updpwd_t)
 
 logging_send_syslog_msg(updpwd_t)

@@ -237,6 +237,7 @@ miscfiles_read_localization(groupadd_t)
 
 auth_run_chk_passwd(groupadd_t, groupadd_roles)
 auth_rw_lastlog(groupadd_t)
+auth_rw_lock(groupadd_t)
 auth_use_nsswitch(groupadd_t)
 # these may be unnecessary due to the above
 # domtrans_chk_passwd() call.
@@ -334,6 +335,7 @@ auth_run_chk_passwd(passwd_t, passwd_roles)
 auth_manage_shadow(passwd_t)
 auth_relabel_shadow(passwd_t)
 auth_etc_filetrans_shadow(passwd_t)
+auth_rw_lock(passwd_t)
 auth_use_nsswitch(passwd_t)
 
 # allow checking if a shell is executable
@@ -423,6 +425,7 @@ term_use_all_ptys(sysadm_passwd_t)
 auth_manage_shadow(sysadm_passwd_t)
 auth_relabel_shadow(sysadm_passwd_t)
 auth_etc_filetrans_shadow(sysadm_passwd_t)
+auth_rw_lock(sysadm_passwd_t)
 auth_use_nsswitch(sysadm_passwd_t)
 
 # allow vipw to exec the editor
@@ -509,6 +512,7 @@ term_use_all_ptys(useradd_t)
 
 auth_run_chk_passwd(useradd_t, useradd_roles)
 auth_rw_lastlog(useradd_t)
+auth_rw_lock(useradd_t)
 auth_rw_faillog(useradd_t)
 auth_use_nsswitch(useradd_t)
 # these may be unnecessary due to the above

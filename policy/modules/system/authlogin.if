@@ -392,6 +392,24 @@ interface(`auth_var_filetrans_cache',`
 
 ########################################
 ## <summary>
+##	Read/Write authentication lock files.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`auth_rw_lock',`
+	gen_require(`
+		type auth_lock_t;
+	')
+
+	rw_files_pattern($1, auth_lock_t, auth_lock_t)
+')
+
+########################################
+## <summary>
 ##	Run unix_chkpwd to check a password.
 ## </summary>
 ## <param name="domain">
