@@ -86,6 +86,12 @@ type init_var_lib_t;
 files_type(init_var_lib_t)
 
 #
+# init_log_t is the type for /var/log/systemd.
+#
+type init_log_t;
+logging_log_file(init_log_t)
+
+#
 # initctl_t is the type of the named pipe created
 # by init during initialization.  This pipe is used
 # to communicate with init.

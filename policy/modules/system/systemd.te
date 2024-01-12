@@ -1504,6 +1504,12 @@ init_read_state(systemd_pcrphase_t)
 # for writing the TPM public key and measurements to /var/lib/systemd and /run/systemd
 init_manage_runtime_files(systemd_pcrphase_t)
 init_manage_var_lib_files(systemd_pcrphase_t)
+# for writing the TPM measurements to /var/log/systemd
+init_list_log_dirs(systemd_pcrphase_t)
+init_create_log_files(systemd_pcrphase_t)
+init_write_log_files(systemd_pcrphase_t)
+init_setattr_log_files(systemd_pcrphase_t)
+init_log_create_dirs(systemd_pcrphase_t)
 
 logging_send_syslog_msg(systemd_pcrphase_t)
 
