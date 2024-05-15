@@ -40,6 +40,24 @@ interface(`sasl_read_keytab',`
 
 ########################################
 ## <summary>
+##	Memory map SASL keytab files.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`sasl_map_keytab',`
+	gen_require(`
+		type saslauthd_keytab_t;
+	')
+
+	allow $1 saslauthd_keytab_t:file map;
+')
+
+########################################
+## <summary>
 ##	All of the rules required to
 ##	administrate an sasl environment.
 ## </summary>
