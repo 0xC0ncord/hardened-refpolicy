@@ -240,6 +240,8 @@ template(`container_user_role',`
 		systemd_user_manager_dbus_chat($1, container_engine_user_domain)
 
 		systemd_user_app_status($1, container_user_domain)
+
+		systemd_user_use_containers($1)
 	')
 
 	optional_policy(`

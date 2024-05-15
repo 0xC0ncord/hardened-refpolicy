@@ -521,6 +521,29 @@ template(`systemd_user_manager_dbus_chat',`
 
 ######################################
 ## <summary>
+##   Grant the specified systemd user manager
+##	 all the permissions necessary to run user
+##	 containers.
+## </summary>
+## <param name="prefix">
+##	<summary>
+##	Prefix for the user domain.
+##	</summary>
+## </param>
+#
+template(`systemd_user_use_containers',`
+	gen_require(`
+		type $1_systemd_t;
+	')
+
+	optional_policy(`
+		container_read_config($1_systemd_t)
+	')
+')
+
+
+######################################
+## <summary>
 ##   Allow the specified domain to search systemd config home
 ##   content.
 ## </summary>
