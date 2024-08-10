@@ -32,6 +32,13 @@ gen_tunable(container_read_public_content, false)
 
 ## <desc>
 ##	<p>
+##	Allow containers to read generic certs.
+##	</p>
+## </desc>
+gen_tunable(container_read_generic_certs, false)
+
+## <desc>
+##	<p>
 ##	Allow super privileged containers to create NFS servers.
 ##	</p>
 ## </desc>
@@ -403,6 +410,10 @@ optional_policy(`
 tunable_policy(`container_read_public_content',`
 	miscfiles_read_public_files(container_domain)
 	miscfiles_watch_public_dirs(container_domain)
+')
+
+tunable_policy(`container_read_generic_certs',`
+	miscfiles_read_generic_certs(container_domain)
 ')
 
 tunable_policy(`container_use_dri',`
@@ -1041,7 +1052,7 @@ fs_mounton_cgroup(spc_t)
 fs_manage_cgroup_dirs(spc_t)
 fs_manage_cgroup_files(spc_t)
 fs_mount_bpf(spc_t)
-fs_create_bpf_dirs(spc_t)
+fs_manage_bpf_dirs(spc_t)
 fs_manage_bpf_files(spc_t)
 fs_manage_bpf_symlinks(spc_t)
 fs_mounton_fusefs(spc_t)
