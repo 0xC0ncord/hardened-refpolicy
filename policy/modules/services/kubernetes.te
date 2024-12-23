@@ -210,7 +210,7 @@ kubernetes_manage_plugin_files(kubernetes_container_domain)
 # kubelet local policy
 #
 
-allow kubelet_t self:process { getattr getsched setrlimit signal };
+allow kubelet_t self:process { getattr getsched setrlimit signal signull };
 allow kubelet_t self:capability { chown dac_override dac_read_search fowner fsetid kill net_admin net_raw sys_ptrace sys_resource };
 allow kubelet_t self:cap_userns sys_ptrace;
 allow kubelet_t self:fifo_file rw_fifo_file_perms;
@@ -420,6 +420,7 @@ container_getattr_all_files(kubelet_t)
 container_getattr_all_ro_files(kubelet_t)
 container_getattr_all_ro_chr_files(kubelet_t)
 container_getattr_all_var_lib_files(kubelet_t)
+container_getattr_tmpfs_files(kubelet_t)
 
 ifdef(`init_systemd',`
 	init_dbus_chat(kubelet_t)
@@ -427,6 +428,7 @@ ifdef(`init_systemd',`
 	init_get_system_status(kubelet_t)
 	init_start_system(kubelet_t)
 	init_stop_system(kubelet_t)
+	init_reload(kubelet_t)
 	init_get_transient_units_status(kubelet_t)
 	init_start_transient_units(kubelet_t)
 	init_stop_transient_units(kubelet_t)
@@ -640,6 +642,9 @@ dontaudit kubectl_t self:capability { sys_admin sys_resource };
 kernel_dontaudit_getattr_proc(kubectl_t)
 
 auth_use_nsswitch(kubectl_t)
+
+# find kubectl plugins
+corecmd_list_bin(kubectl_t)
 
 # not required, but convenient for using config commands
 # in the config directory
