@@ -118,6 +118,8 @@ corenet_tcp_connect_http_port(kanidm_unixd_t)
 
 corecmd_exec_shell(kanidm_unixd_t)
 
+dev_rw_tpm(kanidm_unixd_t)
+
 domain_use_interactive_fds(kanidm_unixd_t)
 
 # watch /etc/passwd
@@ -126,6 +128,7 @@ files_watch_etc_files(kanidm_unixd_t)
 fs_read_cgroup_files(kanidm_unixd_t)
 
 kernel_read_system_state(kanidm_unixd_t)
+kernel_read_vm_overcommit_sysctl(kanidm_unixd_t)
 
 auth_use_nsswitch(kanidm_unixd_t)
 
