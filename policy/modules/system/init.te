@@ -543,6 +543,7 @@ ifdef(`init_systemd',`
 	systemd_relabelto_journal_dirs(init_t)
 	systemd_relabelto_journal_files(init_t)
 	systemd_stream_connect_userdb(init_t)
+	systemd_write_inherited_logind_sessions_pipes(init_t)
 
 	term_create_devpts_dirs(init_t)
 	term_create_ptmx(init_t)
