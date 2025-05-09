@@ -74,6 +74,8 @@ corenet_tcp_bind_generic_node(kanidmd_t)
 corenet_tcp_bind_http_port(kanidmd_t)
 corenet_tcp_bind_servistaitsm_port(kanidmd_t)
 
+dev_read_sysfs(kanidmd_t)
+
 domain_use_interactive_fds(kanidmd_t)
 
 files_read_usr_files(kanidmd_t)
@@ -118,6 +120,7 @@ corenet_tcp_connect_http_port(kanidm_unixd_t)
 
 corecmd_exec_shell(kanidm_unixd_t)
 
+dev_read_sysfs(kanidm_unixd_t)
 dev_rw_tpm(kanidm_unixd_t)
 
 domain_use_interactive_fds(kanidm_unixd_t)
@@ -158,10 +161,16 @@ corecmd_exec_bin(kanidm_unixd_tasks_t)
 domain_obj_id_change_exemption(kanidm_unixd_tasks_t)
 
 files_search_home(kanidm_unixd_tasks_t)
+# recursively watch everything in /etc
+files_list_non_auth_dirs(kanidm_unixd_tasks_t)
+files_watch_non_auth_dirs(kanidm_unixd_tasks_t)
+files_dontaudit_getattr_all_files(kanidm_unixd_tasks_t)
+files_dontaudit_getattr_all_symlinks(kanidm_unixd_tasks_t)
 
 kernel_read_kernel_sysctls(kanidm_unixd_tasks_t)
 kernel_read_system_state(kanidm_unixd_tasks_t)
 
+auth_read_shadow(kanidm_unixd_tasks_t)
 auth_use_nsswitch(kanidm_unixd_tasks_t)
 
 logging_send_syslog_msg(kanidm_unixd_tasks_t)
