@@ -413,6 +413,10 @@ optional_policy(`
 ')
 
 optional_policy(`
+	dracut_run(sysadm_t, sysadm_r)
+')
+
+optional_policy(`
 	drbd_admin(sysadm_t, sysadm_r)
 ')
 
@@ -539,6 +543,10 @@ optional_policy(`
 
 optional_policy(`
 	ipsec_admin(sysadm_t, sysadm_r)
+')
+
+optional_policy(`
+	installkernel_run(sysadm_t, sysadm_r)
 ')
 
 optional_policy(`
