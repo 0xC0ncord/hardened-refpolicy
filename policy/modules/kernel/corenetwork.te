@@ -1632,6 +1632,7 @@ type spamd_server_packet_t, packet_type, server_packet_type;
 typeattribute spamd_port_t reserved_port_type;
 typeattribute spamd_port_t rpc_port_type;
 portcon tcp 783 gen_context(system_u:object_r:spamd_port_t,s0)
+portcon tcp 11333 gen_context(system_u:object_r:spamd_port_t,s0)
 
 
 type speech_port_t, port_type, defined_port_type;
